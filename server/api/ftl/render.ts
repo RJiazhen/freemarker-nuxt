@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   console.log(fm);
 
   const html = await new Promise((resolve, reject) => {
-    fm.render(template, JSON.parse(dataModal), (err, result) => {
+    fm.render(template, dataModal, (err, result) => {
       if (err) {
         reject(err);
       } else {
