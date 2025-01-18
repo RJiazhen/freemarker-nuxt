@@ -1,12 +1,39 @@
 <template>
-  <UContainer style="padding: 20px">
-    <UHeader>ftl在线编辑器</UHeader>
-    <UPageBody>
-      <UTextarea v-model="template"></UTextarea>
-      <UTextarea v-model="dataModal"></UTextarea>
-      <UTextarea v-model="html"></UTextarea>
-      <UButton @click="compile">编译</UButton>
-    </UPageBody>
+  <UContainer
+    class="p-20 min-h-screen grid grid-rows-[auto,1fr,auto] gap-10 place-items-center"
+  >
+    <h1>ftl在线编辑器</h1>
+    <div class="flex gap-10 w-full h-full">
+      <div class="flex flex-col gap-5 w-1/2 h-full">
+        <UCard class="flex-grow">
+          <template #header> 模板 </template>
+          <UTextarea
+            v-model="template"
+            size="xl"
+            autoresize
+            resize
+          ></UTextarea>
+        </UCard>
+        <UCard class="flex-grow">
+          <template #header> 数据 </template>
+          <UTextarea
+            v-model="dataModal"
+            autoresize
+            resize
+          ></UTextarea>
+        </UCard>
+      </div>
+      <UCard class="w-1/2">
+        <template #header> 编译结果 </template>
+        <UTextarea
+          v-model="html"
+          autoresize
+          resize
+          readonly
+        ></UTextarea>
+      </UCard>
+    </div>
+    <UButton @click="compile">编译</UButton>
   </UContainer>
 </template>
 
