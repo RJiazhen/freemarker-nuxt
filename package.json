@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "@nuxt/ui": "^2.21.0",
-    "freemarker": "^2.0.1"
+    "@types/fs-extra": "^11.0.4",
+    "freemarker": "^2.0.1",
+    "fs-extra": "^11.3.0"
   }
 }
