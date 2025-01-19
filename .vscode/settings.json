@@ -1,0 +1,20 @@
+{
+  "conventionalCommits.scopes": [
+    ".gitignore",
+    "pagekage.json",
+    "pages",
+    "views",
+    "utils",
+    "styles",
+    "components",
+    "store",
+    ".vscode",
+    "README.md",
+    "nuxt.config.ts",
+    "pages",
+    "server",
+    "api",
+    "public",
+    "tsconfig.json",
+  ]
+}
