@@ -16,7 +16,7 @@
         <UCard class="flex-grow">
           <template #header> 数据 </template>
           <UTextarea
-            v-model="dataModal"
+            v-model="dataModel"
             autoresize
             resize
           ></UTextarea>
@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 const template = ref('Hello, ${name}!');
-const dataModal = ref(JSON.stringify({ name: 'world' }, null, 2));
+const dataModel = ref(JSON.stringify({ name: 'world' }, null, 2));
 const html = ref('');
 
 const toast = useToast();
@@ -54,7 +54,7 @@ const compileBtnLoading = ref(false);
 
 const compile = async () => {
   try {
-    JSON.parse(dataModal.value);
+    JSON.parse(dataModel.value);
   } catch (e) {
     toast.add({
       icon: 'i-heroicons-x-circle',
@@ -70,11 +70,11 @@ const compile = async () => {
     method: 'POST',
     body: {
       template: template.value,
-      dataModal: JSON.parse(dataModal.value),
+      dataModel: JSON.parse(dataModel.value),
     },
   });
   compileBtnLoading.value = false;
 
-  html.value = data.value.html;
+  html.value = data.value.result;
 };
 </script>

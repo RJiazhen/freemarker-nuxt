@@ -1,15 +1,16 @@
 import Freemarker from 'freemarker';
+import { dataModelToJson } from '~/server/utils/dataModelToJson';
 
 export default defineEventHandler(async (event) => {
-  const { template, dataModal } = await readBody(event);
-  const body = await readBody(event);
+  const { template, dataModel } = await readBody(event);
 
   const fm = new Freemarker();
 
-  console.log(fm);
+  const dataModelJson =
+    typeof dataModel === 'string' ? dataModelToJson(dataModel) : dataModel;
 
   const html = await new Promise((resolve, reject) => {
-    fm.render(template, dataModal, (err, result) => {
+    fm.render(template, dataModelJson, (err, result) => {
       if (err) {
         reject(err);
       } else {
@@ -19,6 +20,6 @@ export default defineEventHandler(async (event) => {
   });
 
   return {
-    html,
+    result: html,
   };
 });
